@@ -1,0 +1,51 @@
+<?php
+
+return [
+    'services' => 'Service|Services',
+    'categories' => 'Category|Categories',
+    'choose_category' => 'Choose category',
+    'events' => 'Event|Events',
+    'no_events' => 'There are no events to show',
+    'assigned_to' => 'Assigned to',
+    'assign_to' => 'Assign to',
+    'closed_at' => 'Solved at',
+    'unassigned' => 'Unassigned',
+    'assign' => 'Assign',
+    'photo' => 'Photo',
+    'created_by' => 'Created by',
+
+    'deaths' => 'Death|Deaths',
+    'cementery' => 'Cementery',
+    'mortuary' => 'Mortuary',
+    'types' => 'Type|Types',
+    'register_number' => 'Reg. number',
+    'choose_type' => 'Choose type',
+    'death_date' => 'Death date',
+    'deceased' => 'Deceased',
+    'relative' => 'Relative',
+
+    'death_info' => 'Death info.',
+    'doctor_name' => 'Doctor name',
+    'doctor_number' => 'Doctor number',
+    'wake' => 'Wake',
+
+    'funeral_home' => 'Funeral home',
+    'delivery_funeral_home' => 'Delivery funeral home',
+    'sector' => 'Sector',
+    'row' => 'Row',
+    'number' => 'Number',
+    'section' => 'Section',
+    'class' => 'Class',
+
+    'service_date' => 'Service date',
+    'mortuary_entry_date' => 'Entry date',
+    'mortuary_exit_date' => 'Exit date',
+    'mortuary_treatment' => 'Treatment',
+    'mortuary_treatment_operator' => 'Treatment operator',
+    'mortuary_treatment_responsable' => 'Treatment responsable',
+    'receives_funeral_home' => 'Receives funeral home',
+    'mortuary_receives_destination' => 'Mortuary receives destination',
+
+    'delete_death' => 'Delete death',
+    'delete_event_warning' => 'Death will be deleted. Continue?',
+];

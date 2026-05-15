@@ -1,0 +1,51 @@
+<?php
+
+return [
+    'services' => 'Servicio|Servicios',
+    'categories' => 'Categoría|Categorías',
+    'choose_category' => 'Elegir categoría',
+    'events' => 'Incidencia|Incidencias',
+    'no_events' => 'No hay incidencias para mostrar',
+    'assigned_to' => 'Asignado a',
+    'assign_to' => 'Asignar a',
+    'closed_at' => 'Resuelto el',
+    'unassigned' => 'Sin asignar',
+    'assign' => 'Asignar',
+    'photo' => 'Fotografía',
+    'created_by' => 'Creada por',
+
+    'deaths' => 'Defunción|Defunciones',
+    'cementery' => 'Cementerio',
+    'mortuary' => 'Mortuorio',
+    'types' => 'Tipo|Tipos',
+    'register_number' => 'Nº registro',
+    'choose_type' => 'Elegir tipo',
+    'death_date' => 'Fecha de fallecimiento',
+    'deceased' => 'Difunto',
+    'relative' => 'Pariente',
+
+    'death_info' => 'Info. fallecimiento',
+    'doctor_name' => 'Nombre del médico',
+    'doctor_number' => 'Nº colegiado',
+    'wake' => 'Velatorio',
+
+    'funeral_home' => 'Funeraria',
+    'delivery_funeral_home' => 'Funeraria de entrega',
+    'sector' => 'Sector',
+    'row' => 'Fila',
+    'number' => 'Número',
+    'section' => 'Sección',
+    'class' => 'Clase',
+
+    'service_date' => 'Fecha de servicio',
+    'mortuary_entry_date' => 'Fecha de entrada',
+    'mortuary_exit_date' => 'Fecha de salida',
+    'mortuary_treatment' => 'Tratamiento',
+    'mortuary_treatment_operator' => 'Operario tratamiento',
+    'mortuary_treatment_responsable' => 'Responsable tratamiento',
+    'receives_funeral_home' => 'Funeraria de recogida',
+    'mortuary_receives_destination' => 'Morturio receptor destino',
+
+    'delete_death' => 'Borrar defunción',
+    'delete_death_warning' => 'Se borrará la defunción. ¿Continuar?',
+];

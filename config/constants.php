@@ -1,0 +1,117 @@
+<?php
+
+return [
+	'roles' => [
+		"citizen" => 1,
+		"collaborator" => 2,
+		"employee" => 3,
+		"responsable" => 4,
+		"administrator" => 5,
+		"superadmin" => 6
+	],
+    'levels' => [
+		"citizen" => 1,
+		"collaborator" => 2,
+		"employee" => 3,
+		"responsable" => 4,
+		"administrator" => 5,
+		"superadmin" => 6,
+        "basic" => 7
+	],
+	'pagination' => [
+		'DEFAULT_PAGE_RECORDS' => 150,
+		'LIMIT_PAGE_RECORDS' => 1000
+	],
+	'months' => [
+		1 => 'Enero',
+		2 => 'Febrero',
+		3 => 'Marzo',
+		4 => 'Abril',
+		5 => 'Mayo',
+		6 => 'Junio',
+		7 => 'Julio',
+		8 => 'Agosto',
+		9 => 'Septiembre',
+		10 => 'Octubre',
+		11 => 'Noviembre',
+		12 => 'Diciembre',
+	],
+	'days' => [
+		1 => ['es' => 'Lunes', 'en' => 'Monday'],
+		2 => ['es' => 'Martes', 'en' => 'Tuesday'],
+		3 => ['es' => 'Miercoles', 'en' => 'Wednesday'],
+		4 => ['es' => 'Jueves', 'en' => 'Thursday'],
+		5 => ['es' => 'Viernes', 'en' => 'Friday'],
+		6 => ['es' => 'Sabado', 'en' => 'Saturday'],
+		7 => ['es' => 'Domingo', 'en' => 'Sunday'],
+	],
+    'date_type' => [
+		'insert_at' => 'Fecha alta',
+		'customer_date' => 'Fecha cliente',
+		'expiration_date' => 'Fecha vencimiento',
+		'delivery_date' => 'Fecha entrega',
+		'last_login' => 'Última conexión',
+	],
+    'templates_objects' => [
+        'payment' => 1,
+        'notification' => 2,
+        'decree' => 3,
+        'inscription' => 4,
+        'thirdparty_info' => 5,
+        'reservation' => 6,
+        'schedules' => 7,
+        'bonus_request' => 8,
+        'generic' => 9,
+        'bib' => 10,
+        'tickets_report' => 11,
+    ],
+    'templates_sections' => [
+        'sports' => 1,
+        'taxes' => 2,
+        'events' => 3,
+        'town-planning' => 4,
+        'generic' => 5,
+        'general' => 6,
+    ],
+    'templates_types' => [
+        'email' => 1,
+        'document' => 2,
+    ],
+    'sports_events_payments_types' => [
+        'inscription' => 1,
+        'partial' => 2,
+        'periodic' => 3,
+    ],
+    'events_payments_types' => [
+        'inscription' => 1,
+        'partial' => 2,
+        'periodic' => 3,
+    ],
+    'treasury_liquidations_concepts_types' => [
+        'linear' => 1,
+        'interval' => 2,
+        'description' => 3,
+        'section' => 4,
+    ],
+    'tickets_types' => [
+        'general' => 1,
+        'protocol' => 2,
+        'ticket_office' => 3,
+    ],
+    'states' => [
+        'paid' => 1,
+        'pending' => 2,
+        'open' => 3,
+        'closed' => 4,
+        'cancelled' => 5,
+        'active' => 6,
+        'inactive' => 7,
+        'reserved' => 8,
+        'retend' => 9,
+        'unused' => 10,
+        'requested' => 11,
+        'approved' => 12,
+        'denied' => 13,
+
+    ],
+];
