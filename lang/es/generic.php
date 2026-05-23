@@ -56,6 +56,7 @@ return [
     'new' => 'Nuevo',
     'pending' => 'Pendiente',
     'payment_pending' => 'Pendiente de pago',
+    'edit' => 'Editar',
 
     'filter' => 'Filtrar',
     'from' => 'Desde',
@@ -70,9 +71,12 @@ return [
     'choose_type' => 'Elegir tipo',
     'choose' => 'Elegir',
     'change_theme' => 'Cambiar tema',
+    'search' => 'Buscar',
+    'no_records_found' => 'No se han encontrado registros',
 
     'button_new' => 'Nuevo',
     'button_filter' => 'Filtrar',
+    'button_delete_filter' => 'Eliminar filtro',
     'button_find' => 'Buscar',
     'button_delete' => 'Borrar',
     'button_save' => 'Guardar',
@@ -97,6 +101,8 @@ return [
     'export_file' => 'Exportar fichero',
 
     'sure' => '¿Seguro?',
+    'are_you_sure' => '¿Estás seguro?',
+    'confirm_delete' => '¿Estás seguro de que quieres eliminar el registro elegido? Esta acción no se puede deshacer.',
     'warning' => 'Aviso',
     'information' => 'Información',
     'info' => 'Info',

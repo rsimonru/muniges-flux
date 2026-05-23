@@ -14,9 +14,14 @@ return [
     'all' => 'Todos',
     'downgrade_user' => 'Degradar usuario',
     'downgrade_user_info' => 'Al degradar al usuario se eliminan los permisos que no le correspondan en menús y grupos',
+    'leave_blank_keep_current' => 'Dejar en blanco para mantener la actual',
+    'name_placeholder' => 'Introducir el nombre',
+    'email_placeholder' => 'Introducir el e-mail',
 
     'filter_groups' => 'Filtrar grupos',
     'no_groups' => 'No hay grupos para mostrar',
+    'user_updated' => 'Usuario actualizado correctamente',
+    'user_created' => 'Usuario creado correctamente',
 
     'townhalls' => 'Ayuntamiento|Ayuntamientos',
     'no_townhalls' => 'No hay ayuntamientos para mostrar',

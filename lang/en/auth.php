@@ -18,9 +18,13 @@ return [
 
     'email' => 'e-mail',
     'password' => 'Password',
+    'password_confirmation' => 'Confirm Password',
     'password_forgot' => 'Forgot password?',
     'login' => 'Login',
 
     'validation_errors' => 'Something went wrong.',
+
+    'password_placeholder' => 'Enter your password',
+    'confirm_password_placeholder' => 'Confirm your password',
 
 ];

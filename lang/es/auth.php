@@ -18,9 +18,13 @@ return [
 
     'email' => 'Correo electrónico',
     'password' => 'Contraseña',
+    'password_confirmation' => 'Confirmar contraseña',
     'password_forgot' => '¿Olvidó la contraseña?',
     'login' => 'Acceder',
 
     'validation_errors' => 'Se produjo un error.',
+
+    'password_placeholder' => 'Introduce tu contraseña',
+    'confirm_password_placeholder' => 'Confirma tu contraseña',
 
 ];

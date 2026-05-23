@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Devlab\LaravelLogs\Traits\WithExtensions;
+use App\Traits\WithExtensions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ServicesEventsNote extends Model
@@ -13,15 +13,11 @@ class ServicesEventsNote extends Model
     /**
      * Get services events notes
      *
-     * @param int $model_id
-     * @param int $records_in_page
-     * @param array $sort (attribute => 'asc'/'desc')
-     * @param array $filters
+     * @param  array  $sort  (attribute => 'asc'/'desc')
      * @return mixed Collection
-     *
      */
     public static function emtGet(
-        int $model_id=0,
+        int $model_id = 0,
         int $records_in_page = 0,
         array $sort = [],
         array $filters = [],
@@ -29,38 +25,44 @@ class ServicesEventsNote extends Model
     ) {
 
         $oQuery = static::select('services_events_notes.*')
-        ->when($model_id>0, function($query) use ($model_id) {
-            return $query->where('services_events_notes.id', $model_id);
-        })
-        ->when(isset($filters['events_id']) && !empty($filters['events_id']), function($query) use ($filters) {
-            return $query->where('services_events_notes.events_id', $filters['events_id']);
-        })
-        ->when(isset($filters['state']) && !empty($filters['state']), function($query) use ($filters) {
-            return $query->where('services_events_notes.state', $filters['state']);
-        })
-        ->when(isset($filters['observations']) && !empty($filters['observations']), function($query) use ($filters) {
-            $query->where('services_events_notes.observations', 'like', '%'.$filters['observations'].'%');
-        })
-        ;
+            ->when($model_id > 0, function ($query) use ($model_id) {
+                return $query->where('services_events_notes.id', $model_id);
+            })
+            ->when(isset($filters['events_id']) && ! empty($filters['events_id']), function ($query) use ($filters) {
+                return $query->where('services_events_notes.events_id', $filters['events_id']);
+            })
+            ->when(isset($filters['state']) && ! empty($filters['state']), function ($query) use ($filters) {
+                return $query->where('services_events_notes.state', $filters['state']);
+            })
+            ->when(isset($filters['observations']) && ! empty($filters['observations']), function ($query) use ($filters) {
+                $query->where('services_events_notes.observations', 'like', '%'.$filters['observations'].'%');
+            });
 
         foreach ($sort as $key => $value) {
             $oQuery->orderBy($key, $value);
         }
-        //$oQuery->dd();
+
+        // $oQuery->dd();
         return static::getModelData($oQuery, $model_id, $records_in_page, $with);
     }
 
-    public function services_event() {
+    public function services_event()
+    {
         return $this->hasOne(ServicesEvent::class, 'id', 'events_id')->with('services_category');
     }
-    public function state() {
+
+    public function state()
+    {
         return $this->hasOne(State::class, 'id', 'states_id');
     }
-    public function user() {
+
+    public function user()
+    {
         return $this->hasOne(User::class, 'id', 'created_user');
     }
-    public function assigned_user() {
+
+    public function assigned_user()
+    {
         return $this->hasOne(User::class, 'id', 'assigned_user_id');
     }
-
 }

@@ -9,10 +9,11 @@ class UsersExport extends ExcelExport
 {
     public function __construct($filters)
     {
-        //dd($filters);
+        // dd($filters);
         $this->jobLimit = 2000;
         parent::__construct($filters);
     }
+
     public function headings(): array
     {
 
@@ -26,8 +27,10 @@ class UsersExport extends ExcelExport
             ['title' => 'Creado', 'type' => 'DD/MM/YYYY HH:MM', 'width' => 20],
             ['title' => 'Modificado', 'type' => 'DD/MM/YYYY HH:MM', 'width' => 20],
         ];
+
         return $headers;
     }
+
     public function map($record): array
     {
         $roles = $record->roles;
@@ -45,20 +48,22 @@ class UsersExport extends ExcelExport
             $record->name,
             $record->email,
             $rol,
-            $record->active ?  'Activo' : 'Desactivado',
+            $record->active ? 'Activo' : 'Desactivado',
             $record->last_login ? $record->last_login->format('Y-m-d H:i:s') : '',
             $record->updated_at ? $record->updated_at->format('Y-m-d H:i:s') : '',
             $record->created_at ? $record->created_at->format('Y-m-d H:i:s') : '',
         ];
+
         return $records;
     }
 
     public function setQuery()
     {
         $this->query = User::select('users.*')
-        ->join('users_town_halls as uth', 'users.id', 'uth.users_id')
-        ->join('levels as l', 'l.id', 'uth.level_id')
-        ->with('roles');
+            ->join('users_town_halls as uth', 'users.id', 'uth.users_id')
+            ->join('levels as l', 'l.id', 'uth.level_id')
+            ->where('uth.townhalls_id', session('townhall_id', 0))
+            ->with('roles');
         $this->query = User::dlApplyFilters($this->query, $this->filters);
     }
 }

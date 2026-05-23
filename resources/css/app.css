@@ -55,6 +55,16 @@
     @apply  !mb-0 !leading-tight;
 }
 
+@layer components {
+    [data-flux-file-item] [data-slot="content"] {
+        @apply min-w-0;
+    }
+
+    [data-flux-file-item] [data-slot="content"] > *:first-child {
+        @apply block max-w-full overflow-hidden whitespace-nowrap text-ellipsis;
+    }
+}
+
 input:focus[data-flux-control],
 textarea:focus[data-flux-control],
 select:focus[data-flux-control] {

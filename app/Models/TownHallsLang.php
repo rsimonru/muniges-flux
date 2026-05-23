@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Devlab\LaravelLogs\Traits\WithExtensions;
+use App\Traits\WithExtensions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class TownHallsLang extends Model
@@ -13,15 +13,11 @@ class TownHallsLang extends Model
     /**
      * Get town hall langs
      *
-     * @param int $model_id
-     * @param int $records_in_page
-     * @param array $sort (attribute => 'asc'/'desc')
-     * @param array $filters
+     * @param  array  $sort  (attribute => 'asc'/'desc')
      * @return mixed Collection
-     *
      */
     public static function emtGet(
-        int $model_id=0,
+        int $model_id = 0,
         int $records_in_page = 0,
         array $sort = [],
         array $filters = [],
@@ -29,21 +25,23 @@ class TownHallsLang extends Model
     ) {
 
         $oQuery = static::select('town_halls_langs.*')
-        ->when($model_id>0, function($query) use ($model_id) {
-            return $query->where('town_halls_langs.id', $model_id);
-        })
-        ->when(isset($filters['townhalls_id']) && !empty($filters['townhalls_id']), function($query) use ($filters) {
-            $query->where('town_halls_langs.townhalls_id', $filters['townhalls_id']);
-        });
+            ->when($model_id > 0, function ($query) use ($model_id) {
+                return $query->where('town_halls_langs.id', $model_id);
+            })
+            ->when(isset($filters['townhalls_id']) && ! empty($filters['townhalls_id']), function ($query) use ($filters) {
+                $query->where('town_halls_langs.townhalls_id', $filters['townhalls_id']);
+            });
 
         foreach ($sort as $key => $value) {
             $oQuery->orderBy($key, $value);
         }
-        //dd($oQuery->toSql());
+
+        // dd($oQuery->toSql());
         return static::getModelData($oQuery, $model_id, $records_in_page, $with);
     }
 
-    public function townhall() {
+    public function townhall()
+    {
         return $this->hasOne(TownHall::class, 'id', 'townhalls_id');
     }
 }

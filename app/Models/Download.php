@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Devlab\LaravelLogs\Traits\WithExtensions;
+use App\Traits\WithExtensions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Storage;
 class Download extends Model
 {
     use HasFactory;
-    use WithExtensions;
     use SoftDeletes;
+    use WithExtensions;
 
     protected $casts = [
         'created_at' => 'datetime',
@@ -26,12 +26,9 @@ class Download extends Model
     /**
      * Get customers.
      *
-     * @param int $iUsers_id
-     * @param int $records_in_page
-     * @param array $sort (attribute => 'asc'/'desc')
-     * @param array $filters
+     * @param  int  $user_id
+     * @param  array  $sort  (attribute => 'asc'/'desc')
      * @return mixed Collection
-     *
      */
     public static function emtGet(
         ?int $model_id = 0,
@@ -48,10 +45,10 @@ class Download extends Model
         $oQuery->when($model_id > 0, function ($query) use ($model_id) {
             return $query->where('downloads.id', $model_id);
         })
-            ->when(isset($filters['models_ids']) && !empty($filters['models_ids']), function ($query) use ($filters) {
+            ->when(isset($filters['models_ids']) && ! empty($filters['models_ids']), function ($query) use ($filters) {
                 return $query->whereIn(static::getTableName().'.id', $filters['models_ids']);
             })
-            ->when(isset($filters['user_id']) && !empty($filters['user_id']), function ($query) use ($filters) {
+            ->when(isset($filters['user_id']) && ! empty($filters['user_id']), function ($query) use ($filters) {
                 return $query->where('downloads.user_id', $filters['user_id']);
             })
             ->when(isset($filters['downloaded']) && $filters['downloaded'] == false, function ($query) {
@@ -63,18 +60,18 @@ class Download extends Model
             ->when(isset($filters['finished']) && $filters['finished'] == true, function ($query) {
                 return $query->whereNotNull('downloads.finished_at');
             })
-            ->when(isset($filters['search']) && !empty($filters['search']), function ($query) use ($filters) {
-                return $query->where(function ($query) use ($filters){
+            ->when(isset($filters['search']) && ! empty($filters['search']), function ($query) use ($filters) {
+                return $query->where(function ($query) use ($filters) {
                     $query->where('downloads.id', $filters['search'])
-                    ->orWhere('downloads.file_name', 'like', '%'.$filters['search'].'%');
+                        ->orWhere('downloads.file_name', 'like', '%'.$filters['search'].'%');
                 });
-            })
-            ;
+            });
 
         foreach ($sort as $key => $value) {
             $oQuery->orderBy($key, $value);
         }
-        //$oQuery->dd();
+
+        // $oQuery->dd();
         return static::getModelData($oQuery, $model_id, $records_in_page, $with);
     }
 

@@ -3,8 +3,8 @@
 namespace App\Listeners;
 
 use App\Classes\UserSession;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Auth\Events\Login;
+
 class UserAuthenticated
 {
     /**
@@ -20,10 +20,9 @@ class UserAuthenticated
     /**
      * Handle the event.
      *
-     * @param  object  $event
      * @return void
      */
-    public function handle($event)
+    public function handle(Login $event)
     {
         //
         $townhall = UserSession::townhall_session_update();

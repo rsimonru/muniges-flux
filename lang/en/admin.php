@@ -14,9 +14,14 @@ return [
     'all' => 'All',
     'downgrade_user' => 'Downgrade user',
     'downgrade_user_info' => 'When downgrade an user, all non acceptable permissions will be deleted',
+    'leave_blank_keep_current' => 'Leave blank to keep current',
+    'name_placeholder' => 'Enter name',
+    'email_placeholder' => 'Enter e-mail',
 
     'filter_groups' => 'Filter groups',
     'no_groups' => 'There are no groups to show',
+    'user_updated' => 'User updated successfully',
+    'user_created' => 'User created successfully',
 
     'townhalls' => 'Town hall|Town halls',
     'no_townhalls' => 'There are no town halls to show',

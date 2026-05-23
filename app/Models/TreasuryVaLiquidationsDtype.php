@@ -2,16 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Devlab\LaravelLogs\Traits\WithExtensions;
 use App\Traits\HasTranslations;
+use App\Traits\WithExtensions;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class TreasuryVaLiquidationsDtype extends Model
 {
     use HasFactory;
-    use WithExtensions;
     use HasTranslations;
+    use WithExtensions;
 
     public $translatable = ['description'];
-
 }

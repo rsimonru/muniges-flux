@@ -10,25 +10,53 @@
                 <flux:sidebar.collapse class="lg:hidden" />
             </flux:sidebar.header>
 
-            <flux:sidebar.nav>
-                <flux:sidebar.group :heading="__('Platform')" class="grid">
-                    <flux:sidebar.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
-                        {{ __('Dashboard') }}
-                    </flux:sidebar.item>
-                </flux:sidebar.group>
-            </flux:sidebar.nav>
+            @php
+                $menus = session('menus');
+            @endphp
+            <flux:navlist variant="outline" class="h-[calc(100vh-9rem)] overflow-y-auto overflow-x-hidden">
+            @foreach ($menus as $menu)
+                @php
+                    $menu_desc = json_decode($menu['description'],true);
+                    $menu_desc = $menu_desc[app()->getLocale()] ?? $menu_desc[config('app.fallback_locale')];
+                    $group = '';
+                    $last_group = '';
+                    $opened_group = false;
+                @endphp
+                <flux:navlist.group :heading="$menu_desc" class="grid" expandable :expanded="request()->is($menu['route']) ? true : false">
+                @foreach ($menu['submenu'] as $submenu)
+                    @php
+                        $group_description = ($submenu['group_description']) ? json_decode($submenu['group_description'],true) : json_decode($menu['description'],true);
+                        $group_description = $group_description[app()->getLocale()] ?? $group_description[config('app.fallback_locale')];
+                    @endphp
+
+                    @if (!empty($submenu['group']) && $submenu['group'] != $menu_desc && ($loop->first || (!empty($submenu['group']) && $submenu['group'] != $group)))
+                        @php
+                            $last_group = $group;
+                            $group = $submenu['group'];
+                            $opened_group = true;
+                        @endphp
+                        <flux:navlist.item icon:trailing="bars-2"> {{ $group_description }}</flux:navlist.item>
+                    @endif
+
+                    @php
+                        $submenu_desc = json_decode($submenu['description'],true);
+                        $submenu_desc = $submenu_desc[app()->getLocale()] ?? $submenu_desc[config('app.fallback_locale')];
+                        $icon = ($submenu['hero_icon']) ? $submenu['hero_icon'] : $menu['hero_icon'];
+                        $icon = str_replace('heroicon-o-', '', $icon);
+                    @endphp
+                    <flux:navlist.item :icon="$icon" :href="$submenu['route']" :current="request()->is($submenu['route'])" wire:navigate>{{ $submenu_desc }}</flux:navlist.item>
+
+                    @if ($opened_group && $last_group != $group)
+                        @php
+                            $opened_group = false;
+                        @endphp
+                    @endif
+                @endforeach
+                </flux:navlist.group>
+            @endforeach
+            </flux:navlist>
 
             <flux:spacer />
-
-            <flux:sidebar.nav>
-                <flux:sidebar.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">
-                    {{ __('Repository') }}
-                </flux:sidebar.item>
-
-                <flux:sidebar.item icon="book-open-text" href="https://laravel.com/docs/starter-kits#livewire" target="_blank">
-                    {{ __('Documentation') }}
-                </flux:sidebar.item>
-            </flux:sidebar.nav>
 
             <x-desktop-user-menu class="hidden lg:block" :name="auth()->user()->name" />
         </flux:sidebar>
@@ -61,6 +89,14 @@
                             </div>
                         </div>
                     </flux:menu.radio.group>
+
+                    <flux:menu.separator />
+
+                    <flux:radio.group x-data variant="segmented" x-model="$flux.appearance">
+                        <flux:radio value="light" icon="sun"></flux:radio>
+                        <flux:radio value="dark" icon="moon"></flux:radio>
+                        <flux:radio value="system" icon="computer-desktop"></flux:radio>
+                    </flux:radio.group>
 
                     <flux:menu.separator />
 
